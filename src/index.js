@@ -1,17 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './app'
+import Theme, {GlobalStyle} from './theme'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<>
+		<Theme>
+			<GlobalStyle />
+			<App long={getUrlParam('long')} lat={getUrlParam('lat')} name={getUrlParam('name')}/>
+		</Theme>
+	</>,
+	document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Helpers
+function getUrlParam(paramName) {
+    var pageUrl = window.location.search.substring(1);
+    var urlVars = pageUrl.split('&');
+    for (var i = 0; i < urlVars.length; i++) {
+        var name = urlVars[i].split('=');
+        if (name[0] === paramName) {
+            return name[1];
+        }
+    }
+}
