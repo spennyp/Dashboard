@@ -27,3 +27,9 @@ This page takes 3 optional url parameters:
 * [openweathermap](https://openweathermap.org/api): used to fetch the weather
 * [gasnow](https://taichi.network/): used to fetch the current ethereum gas price
 * [upsplash](https://unsplash.com/developers): used to fetch the background images
+
+
+## To deploy new changes
+```sh
+npm run deploy
+```
