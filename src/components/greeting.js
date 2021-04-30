@@ -5,6 +5,10 @@ const GreetingStyle = styled.div`
 	width: 100%;
 	text-align: center;
 	font-size: 50px;
+
+	@media screen and (max-width: ${props => props.theme.smallScreen}px) {
+		font-size: 30px;
+	}
 `;
 
 

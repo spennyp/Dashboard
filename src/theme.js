@@ -3,6 +3,10 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components'
 
 const theme = (darkMode, color) => ({
 	primaryWhite: '#FFFFFF',	
+
+	// Media query sizes
+	mediumScreen: 800, 
+	smallScreen: 500,
 });
 
 // Everything that is child of theme, gets theme as its props, so it can be used everywhere

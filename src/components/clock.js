@@ -5,6 +5,10 @@ const StyledClock = styled.div`
 	width: 100%;
 	text-align: center;
 	font-size: 200px;
+
+	@media screen and (max-width: ${props => props.theme.smallScreen}px) {
+		font-size: 100px;
+	}
 `;
 
 class Clock extends React.Component {

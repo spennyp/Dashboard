@@ -61,9 +61,9 @@ class GasTracker extends React.Component {
 	}
 	
 	render() {
-		
+		const hidden = this.state.value ? '' : 'hidden'  // Only show once loaded, don't show if there is an error
 		return (
-			<StyledGasTracker>
+			<StyledGasTracker className={hidden}>
 				<Title>Gas Fee</Title>
 				<Content>
 					<Value>{this.state.value}</Value>	

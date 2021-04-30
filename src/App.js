@@ -5,6 +5,7 @@ import Clock from './components/clock'
 import CalendarPreview from './components/calendarPreview'
 import Greeting from './components/greeting'
 import GasTracker from './components/gasTracker'
+import SearchBar from './components/searchBar'
 
 const outsidePadding = '10px';
 
@@ -36,6 +37,10 @@ const Bottom = styled.div`
 	bottom: ${outsidePadding};
 	font-size: 10px;
 	width: calc(100% - 2*${outsidePadding});
+`;
+
+const Spacer = styled.div`
+ 	height: 10%;
 `;
 
 
@@ -79,6 +84,9 @@ class App extends React.Component {
 						<Weather weatherImg={this.props.weatherImg} lat={this.props.lat} long={this.props.long}/>
 					</Right>
 				</Top>
+				<Spacer />
+				<SearchBar />
+				<Spacer />
 				<Clock />
 				<Greeting name={this.props.name} />
 				<Bottom>
