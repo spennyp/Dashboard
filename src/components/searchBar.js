@@ -25,7 +25,7 @@ const SearchForm = styled.form`
 const SearchText = styled.input`
 	display: inline-block;
 	height: 100%;
-	width: 250px;
+	width: 300px;
 	float: left;
 	padding-left: 20px;
 	border: none;
@@ -35,6 +35,10 @@ const SearchText = styled.input`
 
 	&:focus {
 		outline: none;
+	}
+
+	@media screen and (max-width: ${props => props.theme.smallScreen}px) {
+		width: 250px;
 	}
 `;
 
@@ -84,7 +88,7 @@ class SearchBar extends React.Component {
 			<StyledSearchBar>
 				<SearchForm onSubmit={this.handleSubmit} startSearch={startSearch}>
 					<SearchText id='searchBox' type='text' value={this.state.search} onChange={this.handleChange} /> 
-					<SearchButton type='submit' onClick={this.handleSubmit}><img src='searchIcon.svg' /></SearchButton>
+					<SearchButton type='submit' onClick={this.handleSubmit}><img src='searchIcon.svg' alt=''/></SearchButton>
 				</SearchForm>
 			</StyledSearchBar>
 		);

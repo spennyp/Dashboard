@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, {createGlobalStyle, ThemeProvider} from 'styled-components'
+import {createGlobalStyle, ThemeProvider} from 'styled-components'
 
 const theme = (darkMode, color) => ({
 	primaryWhite: '#FFFFFF',	

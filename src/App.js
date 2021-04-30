@@ -1,11 +1,12 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import Weather from './components/weather'
 import Clock from './components/clock'
 import CalendarPreview from './components/calendarPreview'
 import Greeting from './components/greeting'
 import GasTracker from './components/gasTracker'
 import SearchBar from './components/searchBar'
+import MyLogo from './components/myLogo'
 
 const outsidePadding = '10px';
 
@@ -26,9 +27,10 @@ const Top = styled.div`
 `;
 
 const Right = styled.div`
-	float: right;
+	display: inline;
+	position: absolute;
+	right: 0;
 	height: 100%;
-	display: inline-block;
 `;
 
 const Bottom = styled.div`
@@ -62,7 +64,7 @@ class App extends React.Component {
 			.then(response => response.json())
 			.then(data => {
 				const urls = data['urls'];
-				const {raw, regular, full, small} = urls;
+				const {regular} = urls;
 				const url = 'url(' + regular + ')'
 				this.setState({
 					imgUrl: url,
@@ -92,6 +94,7 @@ class App extends React.Component {
 				<Bottom>
 					<GasTracker />
 					<Right>
+						<MyLogo />
 					</Right>
 				</Bottom>
 			</Dashboard>

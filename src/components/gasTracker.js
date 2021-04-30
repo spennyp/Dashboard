@@ -5,12 +5,16 @@ import styled from 'styled-components'
 const StyledGasTracker = styled.div`
 	font-weight: 200;
 	height: 100%;
-	width: 100px;
+	float: left;
+	vertical-align: bottom;
 `;
 
 const Title = styled.div`
 	font-size: 20px;
 	text-align: center;
+	height: 50%;
+	display: flex;
+	align-items: flex-end;
 `;
 
 const Content = styled.div`
