@@ -8,7 +8,7 @@ import GasTracker from './components/gasTracker'
 import SearchBar from './components/searchBar'
 import MyLogo from './components/myLogo'
 
-const outsidePadding = '10px';
+const outsidePadding = '20px';
 
 const Dashboard = styled.div`
 	width: 100%;
