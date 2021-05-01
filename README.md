@@ -8,6 +8,8 @@ This is the reacreation in ReactJS (in an effort to learn React).
 
 It is hosted at [https://www.spencerperkins.me/Dashboard](https://www.spencerperkins.me/Dashboard/?lat=49.25&long=-123.11&name=YOUR_NAME)
 
+Using this in conjection with the browser extention [New Tab](https://addons.mozilla.org/en-US/firefox/addon/newtab-ext/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search) gives a very clean user experience for new tab and homepages.
+
 ## Key features
 * New background image everytime you visit
 * Greeting message 
@@ -22,6 +24,8 @@ This page takes 3 optional url parameters:
 * lat: latitude of the location you want to display the weather for 
 * long: longitude of the location you want to display the weather for 
 * name: the name you want to appear in the greeting message
+
+Note: location services is not used to maintain privacy, and avoid the annoying browser permissions prompts
 
 ## API's used
 * [openweathermap](https://openweathermap.org/api): used to fetch the weather
