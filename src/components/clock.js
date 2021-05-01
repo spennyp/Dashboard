@@ -37,8 +37,8 @@ class Clock extends React.Component {
 
 	getTime(datetime) {
 		const timeOptions = {
-			hour: "2-digit",
-			minute: "2-digit",
+			hour: "numeric",
+			minute: "numeric",
 		}
 		let time = this.state.datetime.toLocaleTimeString("en-US", timeOptions);
 		time = time.replace("AM","").replace("PM","")

@@ -88,7 +88,7 @@ class SearchBar extends React.Component {
 			<StyledSearchBar>
 				<SearchForm onSubmit={this.handleSubmit} startSearch={startSearch}>
 					<SearchText id='searchBox' type='text' value={this.state.search} onChange={this.handleChange} /> 
-					<SearchButton type='submit' onClick={this.handleSubmit}><img src='searchIcon.svg' alt=''/></SearchButton>
+					<SearchButton type='submit' onClick={this.handleSubmit}><img src={`${process.env.PUBLIC_URL}/searchIcon.svg`} alt=''/></SearchButton>
 				</SearchForm>
 			</StyledSearchBar>
 		);
