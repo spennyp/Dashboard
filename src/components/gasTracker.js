@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 
-const StyledGasTracker = styled.div`
+const StyledGasTracker = styled.a`
 	font-weight: 200;
 	height: 100%;
 	float: left;
 	vertical-align: bottom;
+	color: ${props => props.theme.primaryWhite};
+	text-decoration: none;
 `;
 
 const Title = styled.div`
@@ -67,7 +69,7 @@ class GasTracker extends React.Component {
 	render() {
 		const hidden = this.state.value ? '' : 'hidden'  // Only show once loaded, don't show if there is an error
 		return (
-			<StyledGasTracker className={hidden}>
+			<StyledGasTracker href='https://www.gasnow.org/' className={hidden}>
 				<Title>Gas Fee</Title>
 				<Content>
 					<Value>{this.state.value}</Value>	
