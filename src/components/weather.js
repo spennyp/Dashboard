@@ -70,6 +70,7 @@ class Weather extends React.Component {
 			.then(response => response.json())
 			.then(data => {
 				const {main, name, sys, weather} = data;
+				if(!weather) return;
 				var weatherType = weather[0]['main'].toLowerCase();
 				var {sunrise, sunset} = sys;
 				var now = new Date(); // Unix time since epoche

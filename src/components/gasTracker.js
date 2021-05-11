@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 
 const StyledGasTracker = styled.a`
+	display: inline-flex;
+	flex-direction: column;
 	font-weight: 200;
 	height: 100%;
 	float: left;
@@ -22,12 +24,12 @@ const Title = styled.div`
 const Content = styled.div`
 	padding-top: 3px;
 	height: 50%;
+	display: flex;
 `;
 
 const Value = styled.div`
 	font-size: 30px;
 	display: inline-block;
-	width: 50%;
 	height: 100%;
 	text-align: right;
 	padding-right: 1px;
@@ -37,7 +39,6 @@ const Unit = styled.div`
 	font-size: 15px;
 	display: inline-block;
 	height: 100%;
-	width: 50%;
 	float: right;
 	padding-top: 8px;
 	padding-left: 1px;
