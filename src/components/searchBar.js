@@ -68,7 +68,7 @@ class SearchBar extends React.Component {
 	}
 
 	componentDidMount() {
-		//    	document.getElementById("searchBox").select(); // Make the cursor select the search box on load
+    	document.getElementById("searchBox").select(); // Make the cursor select the search box on load
 	}
 
 	handleChange(event) {
