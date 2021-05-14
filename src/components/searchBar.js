@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-
-const searchIconPath = '../assets/searchIcon.svg'
+import SearchIcon from '../assets/searchIcon.svg'
 
 const StyledSearchBar = styled.div`
 	height: 40px;
@@ -79,7 +78,7 @@ export default function SearchBar() {
 		<StyledSearchBar>
 			<SearchForm onSubmit={handleSubmit} startSearch={startSearch}>
 				<SearchText id='searchBox' type='text' value={search} onChange={handleChange} /> 
-				<SearchButton type='submit' onClick={handleSubmit}><img src={searchIconPath} alt=''/></SearchButton>
+				<SearchButton type='submit' onClick={handleSubmit}><img src={SearchIcon} alt=''/></SearchButton>
 			</SearchForm>
 		</StyledSearchBar>
 	);

@@ -2,17 +2,14 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 // Data
-const weatherImgBase = 'weather/'
 const WEATHER_IMG = {
-	default: weatherImgBase + 'default.svg',
-	thunderstorm: weatherImgBase + 'thunderstorm.svg',
-	drizzle: weatherImgBase + 'drizzle.svg',
-	rain: weatherImgBase + 'rain.svg',
-	snow: weatherImgBase + 'snow.svg',
-	clouds: weatherImgBase + 'clouds.svg',
-	clearnight: weatherImgBase + 'clearnight.svg',
-	clearday: weatherImgBase + 'clearday.svg',
-	hazy: weatherImgBase + 'hazy.svg',
+	default: require('../assets/weather/default.svg'),
+	thunderstorm: require('../assets/weather/thunderstorm.svg'),
+	rain: require('../assets/weather/rain.svg'),
+	clouds: require('../assets/weather/clouds.svg'),
+	clearnight: require('../assets/weather/clearnight.svg'),
+	clearday: require('../assets/weather/clearday.svg'),
+	hazy: require('../assets/weather/hazy.svg'),
 };
 
 
@@ -93,12 +90,11 @@ export default function Weather({lat, long}) {
 	}, [lat, long]);
 
 
-	const hidden = temp ? '' : 'hidden'  // Only show once loaded, don't show if there is an error
-	
+	const hidden = temp && imgPath !== WEATHER_IMG.default ? '' : 'hidden'  // Only show once loaded, don't show if there is an error
 	return (
 		<StyledWeather className={hidden}>
 			<WeatherTop>
-				<WeatherIcon src={imgPath} />
+				<WeatherIcon src={imgPath ? imgPath.default : null} />
 				<WeatherTemp className='vertical-center'>{temp}&deg;</WeatherTemp>
 			</WeatherTop>
 			<WeatherBottom>	
