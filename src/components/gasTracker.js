@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 
@@ -44,41 +44,31 @@ const Unit = styled.div`
 	padding-left: 1px;
 `;
 
-class GasTracker extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			value: null,
-		};
-	}
-
-	componentDidMount() {
+export default function GasTracker() {
+	const [gasPrice, setGasPrice] = useState(null);	
+	
+	// Get the gas price, runs on mount only
+	useEffect(() => {
 		const url = 'https://www.gasnow.org/api/v3/gas/price?utm_source=dashboard';
 		fetch(url)
 			.then(response => response.json())
 			.then(data => {
 				const stdGwei = (data.data.standard * 10**(-9)).toFixed(0)
-				this.setState({
-					value: stdGwei,
-				});
+				setGasPrice(stdGwei);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
-	}
-	
-	render() {
-		const hidden = this.state.value ? '' : 'hidden'  // Only show once loaded, don't show if there is an error
-		return (
-			<StyledGasTracker href='https://www.gasnow.org/' className={hidden}>
-				<Title>Gas Fee</Title>
-				<Content>
-					<Value>{this.state.value}</Value>	
-					<Unit>gwei</Unit>
-				</Content>
-			</StyledGasTracker>
-		);
-	}
-}
+	}, []);
 
-export default GasTracker;
+	const hidden = gasPrice ? '' : 'hidden'  // Only show once loaded, don't show if there is an error
+	return (
+		<StyledGasTracker href='https://www.gasnow.org/' className={hidden}>
+			<Title>Gas Fee</Title>
+			<Content>
+				<Value>{gasPrice}</Value>	
+				<Unit>gwei</Unit>
+			</Content>
+		</StyledGasTracker>
+	);
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 
@@ -23,36 +23,24 @@ const Day = styled.div`
 `;
 
 
-class CalendarPreview extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			month: null,
-			day: null,
-		};
-	}
+export default function CalendarPreview() {
+	const [month, setMonth] = useState(null);
+	const [day, setDay] = useState(null);
 
-	componentDidMount() {
+	useEffect(() => {
 		const datetime = new Date();
 		const day = datetime.getDate();
 		const monthIndex = datetime.getMonth();
 		const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 		const month = months[monthIndex];
-		this.setState({
-			month: month,
-			day: day
-		});
-	}
+		setMonth(month);
+		setDay(day);
+	}, []);
 
-	render() {
-		return (
-			<StyledDate>
-				<Month>{this.state.month}</Month>
-				<Day>{this.state.day}</Day>	
-			</StyledDate>
-		);
-	};
+	return (
+		<StyledDate>
+			<Month>{month}</Month>
+			<Day>{day}</Day>	
+		</StyledDate>
+	);
 }
-
-
-export default CalendarPreview;

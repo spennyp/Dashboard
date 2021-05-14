@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 const StyledClock = styled.div`
@@ -11,48 +11,39 @@ const StyledClock = styled.div`
 	}
 `;
 
-class Clock extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			datetime: new Date(),	
-		};
+const msRefreshRate = 1000; // Every 1sec
 
-		this.getTime = this.getTime.bind(this)
+function formatTime(datetime) {
+	const timeOptions = {
+		hour: "numeric",
+		minute: "numeric",
 	}
 
-	componentDidMount() {
-		this.timerID = setInterval(() => this.tick(), 1000);
-	}
+	let time = datetime.toLocaleTimeString("en-US", timeOptions);
+	time = time.replace("AM","").replace("PM","");
 
-	componentWillUnmount() {
-		clearInterval(this.timerID);
-	}
-
-	tick() {
-		this.setState({
-			datetime: new Date(),
-		});
-	}
-
-	getTime(datetime) {
-		const timeOptions = {
-			hour: "numeric",
-			minute: "numeric",
-		}
-		let time = this.state.datetime.toLocaleTimeString("en-US", timeOptions);
-		time = time.replace("AM","").replace("PM","")
-		return time;
-	}
-
-	render() {
-		const time = this.getTime(this.state.datetime);
-		return (
-			<StyledClock>
-				{time}
-			</StyledClock>
-		);
-	}
+	return time;
 }
 
-export default Clock;
+
+export default function Clock() {
+	const [datetime, setDatetime] = useState(new Date());	
+	const timerRef = useRef();
+
+	// Executed upon mounting
+	useEffect(() => {
+		timerRef.current = setInterval(() => setDatetime(new Date()), msRefreshRate);
+
+		// clean up function
+		return () => { 			
+			clearInterval(timerRef.current);
+		}
+	}, [timerRef, setDatetime]);
+	
+	const time = formatTime(datetime);
+	return (
+		<StyledClock>
+			{time}
+		</StyledClock>
+	);
+}
