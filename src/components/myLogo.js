@@ -20,12 +20,8 @@ const StyledMyLogo = styled.a`
 	}
 `;
 
-class MyLogo extends React.Component {
-	render() {
-		return (
-			<StyledMyLogo href='https://www.spencerperkins.me'>[S]</StyledMyLogo>			
-		);
-	}
+export default function MyLogo() {
+	return (
+		<StyledMyLogo href='https://www.spencerperkins.me'>[S]</StyledMyLogo>			
+	);
 }
-
-export default MyLogo;

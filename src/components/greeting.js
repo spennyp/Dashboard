@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 const GreetingStyle = styled.div`
@@ -11,16 +11,10 @@ const GreetingStyle = styled.div`
 	}
 `;
 
+export default function Greeting({name}) {
+	const [timeOfDay, setTimeOfDay] = useState();
 
-class Greeting extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			timeOfDay: null
-		};
-	}
-
-	componentDidMount() {
+	useEffect(() => {
 		const datetime = new Date();
 		const hour = datetime.getHours();
 		let timeOfDay = 'evening';
@@ -29,19 +23,13 @@ class Greeting extends React.Component {
 		} else if (hour >= 12 && hour <= 17) {
 			timeOfDay = 'afternoon'
 		}
-		
-		this.setState({
-			timeOfDay: timeOfDay,
-		});
-	}
 
-	render() {
-		return (
-			<GreetingStyle>
-				Good {this.state.timeOfDay}{this.props.name ? ', ' + this.props.name : ''}.
-			</GreetingStyle>
-		);
-	}
+		setTimeOfDay(timeOfDay);
+	}, [name]);
+
+	return (
+		<GreetingStyle>
+			Good {timeOfDay}{name ? ', ' + name : ''}.
+		</GreetingStyle>
+	);
 }
-
-export default Greeting;

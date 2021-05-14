@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 // Data
@@ -47,22 +47,14 @@ const WeatherBottom = styled.div`
 `;
 
 
-// Component
-class Weather extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			temp: null,
-			city: null,
-			imgPath: null 
-		};
-	}
+export default function Weather({lat, long}) {
+	const [temp, setTemp] = useState();
+	const [city, setCity] = useState();
+	const [imgPath, setImgPath] = useState();
 
-	componentDidMount() {
+	useEffect(() => {
 		const apiKey = 'a68f7eba17ff810319e0698eb480852e'; // Shouldn't really be here
-		const lat = this.props.lat
-		const long = this.props.long
-		const weatherImg = WEATHER_IMG
+		const weatherImg = WEATHER_IMG;
 		
 		var url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
 
@@ -85,37 +77,34 @@ class Weather extends React.Component {
 				}
 
 				// Set the weather image
-				let imgPath = weatherImg.hazy // catch all: mist, smoke, fog, etc. 
+				let newImgPath = weatherImg.hazy // catch all: mist, smoke, fog, etc. 
 				if (weatherType in weatherImg) {
-					imgPath = weatherImg[weatherType]
+					newImgPath = weatherImg[weatherType]
 				}
 				
-				// Update the state with this data
-				this.setState({ 
-					temp: main.temp.toFixed(0),
-					imgPath: imgPath,
-					city: name,
-				});
+				// Update state
+				setTemp(main.temp.toFixed(0));
+				setImgPath(newImgPath);
+				setCity(name);
 			}) 
 			.catch((error) => {
 				console.log(error);
 			});
-	}
+	}, [lat, long]);
 
-	render() {
-		const hidden = this.state.temp ? '' : 'hidden'  // Only show once loaded, don't show if there is an error
-		return (
-			<StyledWeather className={hidden}>
-				<WeatherTop>
-					<WeatherIcon src={this.state.imgPath} />
-					<WeatherTemp className='vertical-center'>{this.state.temp}&deg;</WeatherTemp>
-				</WeatherTop>
-				<WeatherBottom>	
-					{this.state.city}
-				</WeatherBottom>
-			</StyledWeather>
-		);
-	}
+
+	const hidden = temp ? '' : 'hidden'  // Only show once loaded, don't show if there is an error
+	
+	return (
+		<StyledWeather className={hidden}>
+			<WeatherTop>
+				<WeatherIcon src={imgPath} />
+				<WeatherTemp className='vertical-center'>{temp}&deg;</WeatherTemp>
+			</WeatherTop>
+			<WeatherBottom>	
+				{city}
+			</WeatherBottom>
+		</StyledWeather>
+	);
 }
 
-export default Weather;

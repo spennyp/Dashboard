@@ -83,7 +83,7 @@ class App extends React.Component {
 				<Top>
 					<CalendarPreview />
 					<Right>
-						<Weather weatherImg={this.props.weatherImg} lat={this.props.lat} long={this.props.long}/>
+						<Weather lat={this.props.lat} long={this.props.long}/>
 					</Right>
 				</Top>
 				<Spacer />

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
+const searchIconPath = '../assets/searchIcon.svg'
 
 const StyledSearchBar = styled.div`
 	height: 40px;
@@ -56,43 +57,30 @@ const SearchButton = styled.button`
 	}
 `;
 
-class SearchBar extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			search: '',
-		}
+export default function SearchBar() {
+	const [search, setSearch] = useState('');
 
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	componentDidMount() {
+	// On load, make cursor select search box
+	useEffect(() => {
     	document.getElementById("searchBox").select(); // Make the cursor select the search box on load
-	}
+	}, []);
 
-	handleChange(event) {
-		this.setState({
-			search: event.target.value,
-		});
-	}
-
-	handleSubmit(event) {
-		window.location.href = "https://www.duckduckgo.com?q=" + this.state.search;
+	function handleSubmit(event) {
+		window.location.href = "https://www.duckduckgo.com?q=" + search;
 		event.preventDefault()
 	}
 
-	render() {
-		const startSearch = this.state.search === '' ? false : true;
-		return (
-			<StyledSearchBar>
-				<SearchForm onSubmit={this.handleSubmit} startSearch={startSearch}>
-					<SearchText id='searchBox' type='text' value={this.state.search} onChange={this.handleChange} /> 
-					<SearchButton type='submit' onClick={this.handleSubmit}><img src={`${process.env.PUBLIC_URL}/searchIcon.svg`} alt=''/></SearchButton>
-				</SearchForm>
-			</StyledSearchBar>
-		);
+	function handleChange(event) {
+		setSearch(event.target.value);
 	}
-}
 
-export default SearchBar;
+	const startSearch = search === '' ? false : true;
+	return (
+		<StyledSearchBar>
+			<SearchForm onSubmit={handleSubmit} startSearch={startSearch}>
+				<SearchText id='searchBox' type='text' value={search} onChange={handleChange} /> 
+				<SearchButton type='submit' onClick={handleSubmit}><img src={searchIconPath} alt=''/></SearchButton>
+			</SearchForm>
+		</StyledSearchBar>
+	);
+}
