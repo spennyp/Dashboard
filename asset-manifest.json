@@ -1,17 +1,25 @@
 {
   "files": {
-    "main.js": "/Dashboard/static/js/main.174b5e6a.chunk.js",
-    "main.js.map": "/Dashboard/static/js/main.174b5e6a.chunk.js.map",
+    "main.js": "/Dashboard/static/js/main.ae130ebe.chunk.js",
+    "main.js.map": "/Dashboard/static/js/main.ae130ebe.chunk.js.map",
     "runtime-main.js": "/Dashboard/static/js/runtime-main.01f11761.js",
     "runtime-main.js.map": "/Dashboard/static/js/runtime-main.01f11761.js.map",
-    "static/js/2.6c29ca16.chunk.js": "/Dashboard/static/js/2.6c29ca16.chunk.js",
-    "static/js/2.6c29ca16.chunk.js.map": "/Dashboard/static/js/2.6c29ca16.chunk.js.map",
+    "static/js/2.c562f4bf.chunk.js": "/Dashboard/static/js/2.c562f4bf.chunk.js",
+    "static/js/2.c562f4bf.chunk.js.map": "/Dashboard/static/js/2.c562f4bf.chunk.js.map",
     "index.html": "/Dashboard/index.html",
-    "static/js/2.6c29ca16.chunk.js.LICENSE.txt": "/Dashboard/static/js/2.6c29ca16.chunk.js.LICENSE.txt"
+    "static/js/2.c562f4bf.chunk.js.LICENSE.txt": "/Dashboard/static/js/2.c562f4bf.chunk.js.LICENSE.txt",
+    "static/media/clearday.svg": "/Dashboard/static/media/clearday.79dd66f3.svg",
+    "static/media/clearnight.svg": "/Dashboard/static/media/clearnight.d72ad11f.svg",
+    "static/media/clouds.svg": "/Dashboard/static/media/clouds.642138d8.svg",
+    "static/media/default.svg": "/Dashboard/static/media/default.717c6e48.svg",
+    "static/media/hazy.svg": "/Dashboard/static/media/hazy.670d9598.svg",
+    "static/media/rain.svg": "/Dashboard/static/media/rain.4eaa14cd.svg",
+    "static/media/searchIcon.aedba738.svg": "/Dashboard/static/media/searchIcon.aedba738.svg",
+    "static/media/thunderstorm.svg": "/Dashboard/static/media/thunderstorm.ed0512e4.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.01f11761.js",
-    "static/js/2.6c29ca16.chunk.js",
-    "static/js/main.174b5e6a.chunk.js"
+    "static/js/2.c562f4bf.chunk.js",
+    "static/js/main.ae130ebe.chunk.js"
   ]
 }
